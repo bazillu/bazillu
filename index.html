@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bazillu - Innovative Technology Solutions</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, #0078d4 0%, #004e8c 100%);
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        .cta-button:hover {
+            transform: translateY(-2px);
+        }
+        .pricing-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        .feature-icon {
+            transition: all 0.3s ease;
+        }
+        .pricing-card:hover .feature-icon {
+            transform: scale(1.1);
+        }
+        .float-animation {
+            animation: float 6s ease-in-out infinite;
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+        .pulse-animation {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        .slide-in-left {
+            animation: slideInLeft 1s ease-out;
+        }
+        @keyframes slideInLeft {
+            0% { transform: translateX(-100px); opacity: 0; }
+            100% { transform: translateX(0); opacity: 1; }
+        }
+        .slide-in-right {
+            animation: slideInRight 1s ease-out;
+        }
+        @keyframes slideInRight {
+            0% { transform: translateX(100px); opacity: 0; }
+            100% { transform: translateX(0); opacity: 1; }
+        }
+        .fade-in {
+            animation: fadeIn 1.5s ease-out;
+        }
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+        .chat-container {
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        .ai-assistant {
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+        .ai-assistant.expanded {
+            height: 400px;
+        }
+        .ai-assistant.collapsed {
+            height: 60px;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md fixed w-full z-50">
+        <div class="container mx-auto px-4 md:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center">
+                    <a href="#" class="flex items-center">
+                        <svg class="h-10 w-10 text-blue-600" viewBox="0 0 40 40" fill="currentColor">
+                            <path d="M20 5C11.729 5 5 11.729 5 20C5 28.271 11.729 35 20 35C28.271 35 35 28.271 35 20C35 11.729 28.271 5 20 5ZM20 32C13.383 32 8 26.617 8 20C8 13.383 13.383 8 20 8C26.617 8 32 13.383 32 20C32 26.617 26.617 32 20 32Z"/>
+                            <path d="M25 15H15V25H25V15Z"/>
+                        </svg>
+                        <span class="ml-2 text-xl font-bold text-gray-800">Bazillu</span>
+                    </a>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#products" class="text-gray-700 hover:text-blue-600 transition-colors">Products</a>
+                    <a href="#pricing" class="text-gray-700 hover:text-blue-600 transition-colors">Pricing</a>
+                    <a href="#about" class="text-gray-700 hover:text-blue-600 transition-colors">About Us</a>
+                    <a href="#mission" class="text-gray-700 hover:text-blue-600 transition-colors">Our Mission</a>
+                    <a href="#contact" class="text-gray-700 hover:text-blue-600 transition-colors">Contact</a>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-gray-700 hover:text-blue-600 focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <div id="mobile-menu" class="md:hidden hidden pb-4">
+                <a href="#products" class="block py-2 text-gray-700 hover:text-blue-600">Products</a>
+                <a href="#pricing" class="block py-2 text-gray-700 hover:text-blue-600">Pricing</a>
+                <a href="#about" class="block py-2 text-gray-700 hover:text-blue-600">About Us</a>
+                <a href="#mission" class="block py-2 text-gray-700 hover:text-blue-600">Our Mission</a>
+                <a href="#contact" class="block py-2 text-gray-700 hover:text-blue-600">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-gradient pt-28 pb-20 text-white">
+        <div class="container mx-auto px-4 md:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0 slide-in-left">
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">Transforming Tomorrow with Technology Today</h1>
+                    <p class="text-lg md:text-xl mb-8 opacity-90">Discover innovative solutions that empower your digital journey with Bazillu's cutting-edge technology.</p>
+                    <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                        <a href="#products" class="cta-button bg-white text-blue-700 hover:bg-gray-100 font-semibold py-3 px-6 rounded-lg transition-all duration-300 text-center">Explore Products</a>
+                        <a href="#contact" class="cta-button bg-transparent border-2 border-white hover:bg-white hover:text-blue-700 font-semibold py-3 px-6 rounded-lg transition-all duration-300 text-center">Contact Us</a>
+                    </div>
+                </div>
+                <div class="md:w-1/2 flex justify-center slide-in-right">
+                    <svg class="w-full max-w-md float-animation" viewBox="0 0 500 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="250" cy="200" r="150" fill="#ffffff" fill-opacity="0.1"/>
+                        <path d="M320 140H180V260H320V140Z" fill="#ffffff" fill-opacity="0.2"/>
+                        <path d="M290 170H210V230H290V170Z" fill="#ffffff" fill-opacity="0.3"/>
+                        <path d="M350 120L150 120L150 280L350 280L350 120Z" stroke="#ffffff" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M150 120L250 80L350 120" stroke="#ffffff" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+                        <circle cx="250" cy="200" r="40" stroke="#ffffff" stroke-width="8"/>
+                        <path d="M250 160V200L280 220" stroke="#ffffff" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="py-20 bg-white">
+        <div class="container mx-auto px-4 md:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Our Trending Products</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">Discover our innovative solutions designed to transform your digital experience and boost productivity.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Product 1 -->
+                <div class="product-card bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300">
+                    <div class="bg-blue-600 h-3"></div>
+                    <div class="p-6">
+                        <div class="w-14 h-14 bg-blue-100 rounded-lg flex items-center justify-center mb-4 feature-icon">
+                            <svg class="w-8 h-8 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Bazillu AI Assistant</h3>
+                        <p class="text-gray-600 mb-4">Your personal AI assistant that helps you stay productive and organized with intelligent suggestions and automation.</p>
+                        <a href="mailto:bazilluincorporation@gmail.com?subject=Inquiry%20about%20Bazillu%20AI%20Assistant&body=I'm%20interested%20in%20learning%20more%20about%20Bazillu%20AI%20Assistant." class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition-colors">Learn More</a>
+                    </div>
+                </div>
+                
+                <!-- Product 2 -->
+                <div class="product-card bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300">
+                    <div class="bg-green-600 h-3"></div>
+                    <div class="p-6">
+                        <div class="w-14 h-14 bg-green-100 rounded-lg flex items-center justify-center mb-4 feature-icon">
+                            <svg class="w-8 h-8 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M2 5a2 2 0 012-2h12a2 2 0 012 2v10a2 2 0 01-2 2H4a2 2 0 01-2-2V5zm3.293 1.293a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 01-1.414-1.414L7.586 10 5.293 7.707a1 1 0 010-1.414zM11 12a1 1 0 100 2h3a1 1 0 100-2h-3z" clip-rule="evenodd"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Bazillu 365</h3>
+                        <p class="text-gray-600 mb-4">A comprehensive suite of productivity applications for businesses of all sizes, with cloud integration and real-time collaboration.</p>
+                        <a href="mailto:bazilluincorporation@gmail.com?subject=Inquiry%20about%20Bazillu%20365&body=I'm%20interested%20in%20learning%20more%20about%20Bazillu%20365." class="inline-block bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-4 rounded-lg transition-colors">Learn More</a>
+                    </div>
+                </div>
+                
+                <!-- Product 3 -->
+                <div class="product-card bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300">
+                    <div class="bg-purple-600 h-3"></div>
+                    <div class="p-6">
+                        <div class="w-14 h-14 bg-purple-100 rounded-lg flex items-center justify-center mb-4 feature-icon">
+                            <svg class="w-8 h-8 text-purple-600" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M5.5 16a3.5 3.5 0 01-.369-6.98 4 4 0 117.753-1.977A4.5 4.5 0 1113.5 16h-8z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Bazillu Cloud</h3>
+                        <p class="text-gray-600 mb-4">Secure, scalable cloud computing services that power your business applications with high performance and reliability.</p>
+                        <a href="mailto:bazilluincorporation@gmail.com?subject=Inquiry%20about%20Bazillu%20Cloud&body=I'm%20interested%20in%20learning%20more%20about%20Bazillu%20Cloud." class="inline-block bg-purple-600 hover:bg-purple-700 text-white font-medium py-2 px-4 rounded-lg transition-colors">Learn More</a>
+                    </div>
+                </div>
+                
+                <!-- Product 4 -->
+                <div class="product-card bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300">
+                    <div class="bg-red-600 h-3"></div>
+                    <div class="p-6">
+                        <div class="w-14 h-14 bg-red-100 rounded-lg flex items-center justify-center mb-4 feature-icon">
+                            <svg class="w-8 h-8 text-red-600" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Bazillu Teams</h3>
+                        <p class="text-gray-600 mb-4">A unified communication platform that brings together chat, video meetings, file storage, and application integration.</p>
+                        <a href="mailto:bazilluincorporation@gmail.com?subject=Inquiry%20about%20Bazillu%20Teams&body=I'm%20interested%20in%20learning%20more%20about%20Bazillu%20Teams." class="inline-block bg-red-600 hover:bg-red-700 text-white font-medium py-2 px-4 rounded-lg transition-colors">Learn More</a>
+                    </div>
+                </div>
+                
+                <!-- Product 5 -->
+                <div class="product-card bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300">
+                    <div class="bg-yellow-600 h-3"></div>
+                    <div class="p-6">
+                        <div class="w-14 h-14 bg-yellow-100 rounded-lg flex items-center justify-center mb-4 feature-icon">
+                            <svg class="w-8 h-8 text-yellow-600" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M6.625 2.655A9 9 0 0119 11a1 1 0 11-2 0 7 7 0 00-9.625-6.492 1 1 0 11-.75-1.853zM4.662 4.959A1 1 0 014.75 6.37 6.97 6.97 0 003 11a1 1 0 11-2 0 8.97 8.97 0 012.25-5.953 1 1 0 011.412-.088z" clip-rule="evenodd"></path>
+                                <path fill-rule="evenodd" d="M5 11a5 5 0 1110 0 1 1 0 11-2 0 3 3 0 10-6 0c0 1.677-.345 3.276-.968 4.729a1 1 0 11-1.838-.789A9.964 9.964 0 005 11z" clip-rule="evenodd"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Bazillu Edge</h3>
+                        <p class="text-gray-600 mb-4">A fast, secure web browser designed for the modern web with built-in privacy features and productivity tools.</p>
+                        <a href="mailto:bazilluincorporation@gmail.com?subject=Inquiry%20about%20Bazillu%20Edge&body=I'm%20interested%20in%20learning%20more%20about%20Bazillu%20Edge." class="inline-block bg-yellow-600 hover:bg-yellow-700 text-white font-medium py-2 px-4 rounded-lg transition-colors">Learn More</a>
+                    </div>
+                </div>
+                
+                <!-- Product 6 -->
+                <div class="product-card bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300">
+                    <div class="bg-indigo-600 h-3"></div>
+                    <div class="p-6">
+                        <div class="w-14 h-14 bg-indigo-100 rounded-lg flex items-center justify-center mb-4 feature-icon">
+                            <svg class="w-8 h-8 text-indigo-600" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Bazillu Power Platform</h3>
+                        <p class="text-gray-600 mb-4">Build powerful business applications with low-code tools that connect to your data and work across web and mobile.</p>
+                        <a href="mailto:bazilluincorporation@gmail.com?subject=Inquiry%20about%20Bazillu%20Power%20Platform&body=I'm%20interested%20in%20learning%20more%20about%20Bazillu%20Power%20Platform." class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded-lg transition-colors">Learn More</a>
+                    </div>
+                </div>
+                
+                <!-- Product 7 -->
+                <div class="product-card bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300">
+                    <div class="bg-pink-600 h-3"></div>
+                    <div class="p-6">
+                        <div class="w-14 h-14 bg-pink-100 rounded-lg flex items-center justify-center mb-4 feature-icon">
+                            <svg class="w-8 h-8 text-pink-600" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Bazillu Developer Tools</h3>
+                        <p class="text-gray-600 mb-4">Comprehensive development tools and environments for building modern applications with the latest technologies.</p>
+                        <a href="mailto:bazilluincorporation@gmail.com?subject=Inquiry%20about%20Bazillu%20Developer%20Tools&body=I'm%20interested%20in%20learning%20more%20about%20Bazillu%20Developer%20Tools." class="inline-block bg-pink-600 hover:bg-pink-700 text-white font-medium py-2 px-4 rounded-lg transition-colors">Learn More</a>
+                    </div>
+                </div>
+                
+                <!-- Product 8 -->
+                <div class="product-card bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300">
+                    <div class="bg-teal-600 h-3"></div>
+                    <div class="p-6">
+                        <div class="w-14 h-14 bg-teal-100 rounded-lg flex items-center justify-center mb-4 feature-icon">
+                            <svg class="w-8 h-8 text-teal-600" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M3 5a2 2 0 012-2h10a2 2 0 012 2v8a2 2 0 01-2 2h-2.22l.123.489.804.804A1 1 0 0113 18H7a1 1 0 01-.707-1.707l.804-.804L7.22 15H5a2 2 0 01-2-2V5zm5.771 7H5V5h10v7H8.771z" clip-rule="evenodd"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Bazillu Analytics</h3>
+                        <p class="text-gray-600 mb-4">Advanced analytics and business intelligence tools to help you gain insights from your data and make informed decisions.</p>
+                        <a href="mailto:bazilluincorporation@gmail.com?subject=Inquiry%20about%20Bazillu%20Analytics&body=I'm%20interested%20in%20learning%20more%20about%20Bazillu%20Analytics." class="inline-block bg-teal-600 hover:bg-teal-700 text-white font-medium py-2 px-4 rounded-lg transition-colors">Learn More</a>
+                    </div>
+                </div>
+                
+                <!-- Product 9 -->
+                <div class="product-card bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300">
+                    <div class="bg-orange-600 h-3"></div>
+                    <div class="p-6">
+                        <div class="w-14 h-14 bg-orange-100 rounded-lg flex items-center justify-center mb-4 feature-icon">
+                            <svg class="w-8 h-8 text-orange-600" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Bazillu HR Solutions</h3>
+                        <p class="text-gray-600 mb-4">Comprehensive human resources management tools to streamline recruitment, onboarding, and employee management.</p>
+                        <a href="mailto:bazilluincorporation@gmail.com?subject=Inquiry%20about%20Bazillu%20HR%20Solutions&body=I'm%20interested%20in%20learning%20more%20about%20Bazillu%20HR%20Solutions." class="inline-block bg-orange-600 hover:bg-orange-700 text-white font-medium py-2 px-4 rounded-lg transition-colors">Learn More</a>
+                    </div>
+                </div>
+                
+                <!-- Product 10 -->
+                <div class="product-card bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300">
+                    <div class="bg-cyan-600 h-3"></div>
+                    <div class="p-6">
+                        <div class="w-14 h-14 bg-cyan-100 rounded-lg flex items-center justify-center mb-4 feature-icon">
+                            <svg class="w-8 h-8 text-cyan-600" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M6.672 1.911a1 1 0 10-1.932.518l.259.966a1 1 0 001.932-.518l-.26-.966zM2.429 4.74a1 1 0 10-.517 1.932l.966.259a1 1 0 00.517-1.932l-.966-.26zm8.814-.569a1 1 0 00-1.415-1.414l-.707.707a1 1 0 101.415 1.415l.707-.708zm-7.071 7.072l.707-.707A1 1 0 003.465 9.12l-.708.707a1 1 0 001.415 1.415zm3.2-5.171a1 1 0 00-1.3 1.3l4 10a1 1 0 001.823.075l1.38-2.759 3.018 3.02a1 1 0 001.414-1.415l-3.019-3.02 2.76-1.379a1 1 0 00-.076-1.822l-10-4z" clip-rule="evenodd"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Bazillu Design Suite</h3>
+                        <p class="text-gray-600 mb-4">Professional design tools for creating stunning graphics, illustrations, and user interfaces with ease.</p>
+                        <a href="mailto:bazilluincorporation@gmail.com?subject=Inquiry%20about%20Bazillu%20Design%20Suite&body=I'm%20interested%20in%20learning%20more%20about%20Bazillu%20Design%20Suite." class="inline-block bg-cyan-600 hover:bg-cyan-700 text-white font-medium py-2 px-4 rounded-lg transition-colors">Learn More</a>
+                    </div>
+                </div>
+                
+                <!-- Product 11 -->
+                <div class="product-card bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300">
+                    <div class="bg-lime-600 h-3"></div>
+                    <div class="p-6">
+                        <div class="w-14 h-14 bg-lime-100 rounded-lg flex items-center justify-center mb-4 feature-icon">
+                            <svg class="w-8 h-8 text-lime-600" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 1.944A11.954 11.954 0 012.166 5C2.056 5.649 2 6.319 2 7c0 5.225 3.34 9.67 8 11.317C14.66 16.67 18 12.225 18 7c0-.682-.057-1.35-.166-2.001A11.954 11.954 0 0110 1.944zM11 14a1 1 0 11-2 0 1 1 0 012 0zm0-7a1 1 0 10-2 0v3a1 1 0 102 0V7z" clip-rule="evenodd"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Bazillu Security</h3>
+                        <p class="text-gray-600 mb-4">Comprehensive security solutions to protect your business from cyber threats and ensure data privacy.</p>
+                        <a href="mailto:bazilluincorporation@gmail.com?subject=Inquiry%20about%20Bazillu%20Security&body=I'm%20interested%20in%20learning%20more%20about%20Bazillu%20Security." class="inline-block bg-lime-600 hover:bg-lime-700 text-white font-medium py-2 px-4 rounded-lg transition-colors">Learn More</a>
+                    </div>
+                </div>
+                
+                <!-- Product 12 -->
+                <div class="product-card bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300">
+                    <div class="bg-amber-600 h-3"></div>
+                    <div class="p-6">
+                        <div class="w-14 h-14 bg-amber-100 rounded-lg flex items-center justify-center mb-4 feature-icon">
+                            <svg class="w-8 h-8 text-amber-600" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zM10 18a3 3 0 01-3-3h6a3 3 0 01-3 3z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Bazillu Notifications</h3>
+                        <p class="text-gray-600 mb-4">Advanced notification system for real-time alerts and updates across all your devices and applications.</p>
+                        <a href="mailto:bazilluincorporation@gmail.com?subject=Inquiry%20about%20Bazillu%20Notifications&body=I'm%20interested%20in%20learning%20more%20about%20Bazillu%20Notifications." class="inline-block bg-amber-600 hover:bg-amber-700 text-white font-medium py-2 px-4 rounded-lg transition-colors">Learn More</a>
+                    </div>
+                </div>
+                
+                <!-- Product 13 -->
+                <div class="product-card bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300">
+                    <div class="bg-emerald-600 h-3"></div>
+                    <div class="p-6">
+                        <div class="w-14 h-14 bg-emerald-100 rounded-lg flex items-center justify-center mb-4 feature-icon">
+                            <svg class="w-8 h-8 text-emerald-600" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M4 4a2 2 0 00-2 2v4a2 2 0 002 2V6h10a2 2 0 00-2-2H4zm2 6a2 2 0 012-2h8a2 2 0 012 2v4a2 2 0 01-2 2H8a2 2 0 01-2-2v-4zm6 4a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Bazillu Finance</h3>
+                        <p class="text-gray-600 mb-4">Financial management tools for budgeting, expense tracking, and financial reporting for businesses of all sizes.</p>
+                        <a href="mailto:bazilluincorporation@gmail.com?subject=Inquiry%20about%20Bazillu%20Finance&body=I'm%20interested%20in%20learning%20more%20about%20Bazillu%20Finance." class="inline-block bg-emerald-600 hover:bg-emerald-700 text-white font-medium py-2 px-4 rounded-lg transition-colors">Learn More</a>
+                    </div>
+                </div>
+                
+                <!-- Product 14 -->
+                <div class="product-card bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300">
+                    <div class="bg-rose-600 h-3"></div>
+                    <div class="p-6">
+                        <div class="w-14 h-14 bg-rose-100 rounded-lg flex items-center justify-center mb-4 feature-icon">
+                            <svg class="w-8 h-8 text-rose-600" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Bazillu Scheduler</h3>
+                        <p class="text-gray-600 mb-4">Intelligent scheduling and calendar management tools to optimize your time and boost productivity.</p>
+                        <a href="mailto:bazilluincorporation@gmail.com?subject=Inquiry%20about%20Bazillu%20Scheduler&body=I'm%20interested%20in%20learning%20more%20about%20Bazillu%20Scheduler." class="inline-block bg-rose-600 hover:bg-rose-700 text-white font-medium py-2 px-4 rounded-lg transition-colors">Learn More</a>
+                    </div>
+                </div>
+                
+                <!-- Product 15 -->
+                <div class="product-card bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300">
+                    <div class="bg-sky-600 h-3"></div>
+                    <div class="p-6">
+                        <div class="w-14 h-14 bg-sky-100 rounded-lg flex items-center justify-center mb-4 feature-icon">
+                            <svg class="w-8 h-8 text-sky-600" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M7 2a1 1 0 00-.707 1.707L7 4.414v3.758a1 1 0 01-.293.707l-4 4C.817 14.769 2.156 18 4.828 18h10.343c2.673 0 4.012-3.231 2.122-5.121l-4-4A1 1 0 0113 8.172V4.414l.707-.707A1 1 0 0013 2H7zm2 6.172V4h2v4.172a3 3 0 00.879 2.12l1.027 1.028a4 4 0 00-2.171.102l-.47.156a4 4 0 01-2.53 0l-.563-.187a1.993 1.993 0 00-.114-.035l1.063-1.063A3 3 0 009 8.172z" clip-rule="evenodd"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Bazillu Research Lab</h3>
+                        <p class="text-gray-600 mb-4">Advanced research and development tools for scientific discovery, data analysis, and innovation.</p>
+                        <a href="mailto:bazilluincorporation@gmail.com?subject=Inquiry%20about%20Bazillu%20Research%20Lab&body=I'm%20interested%20in%20learning%20more%20about%20Bazillu%20Research%20Lab." class="inline-block bg-sky-600 hover:bg-sky-700 text-white font-medium py-2 px-4 rounded-lg transition-colors">Learn More</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="#pricing" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-6 rounded-lg transition-colors">View Pricing</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4 md:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Simple, Transparent Pricing</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">Choose the perfect plan for your business needs with our flexible pricing options.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <!-- Basic Plan -->
+                <div class="pricing-card bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300">
+                    <div class="bg-gray-100 p-6 text-center">
+                        <h3 class="text-2xl font-bold text-gray-800">Starter</h3>
+                        <div class="mt-4">
+                            <span class="text-4xl font-bold text-gray-800">$29</span>
+                            <span class="text-gray-600">/month</span>
+                        </div>
+                        <p class="mt-2 text-gray-600">Perfect for small businesses</p>
+                    </div>
+                    <div class="p-6">
+                        <ul class="space-y-4">
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                </svg>
+                                <span>5 Bazillu products</span>
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                </svg>
+                                <span>Up to 10 users</span>
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                </svg>
+                                <span>100GB cloud storage</span>
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                </svg>
+                                <span>Email support</span>
+                            </li>
+                            <li class="flex items-center text-gray-400">
+                                <svg class="w-5 h-5 text-gray-400 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"></path>
+                                </svg>
+                                <span>Advanced analytics</span>
+                            </li>
+                        </ul>
+                        <div class="mt-8">
+                            <a href="mailto:bazilluincorporation@gmail.com?subject=Inquiry%20about%20Starter%20Plan&body=I'm%20interested%20in%20learning%20more%20about%20your%20Starter%20Plan." class="block w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition-colors text-center">Get Started</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Pro Plan -->
+                <div class="pricing-card bg-white rounded-xl shadow-xl overflow-hidden transition-all duration-300 transform scale-105 z-10 border-2 border-blue-500">
+                    <div class="bg-blue-600 p-6 text-center text-white">
+                        <div class="inline-block bg-white text-blue-600 text-xs font-bold py-1 px-3 rounded-full mb-2">MOST POPULAR</div>
+                        <h3 class="text-2xl font-bold">Professional</h3>
+                        <div class="mt-4">
+                            <span class="text-4xl font-bold">$99</span>
+                            <span class="opacity-80">/month</span>
+                        </div>
+                        <p class="mt-2 opacity-80">Ideal for growing companies</p>
+                    </div>
+                    <div class="p-6">
+                        <ul class="space-y-4">
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                </svg>
+                                <span>All 15 Bazillu products</span>
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                </svg>
+                                <span>Up to 50 users</span>
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                </svg>
+                                <span>1TB cloud storage</span>
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                </svg>
+                                <span>24/7 priority support</span>
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                </svg>
+                                <span>Advanced analytics</span>
+                            </li>
+                        </ul>
+                        <div class="mt-8">
+                            <a href="mailto:bazilluincorporation@gmail.com?subject=Inquiry%20about%20Professional%20Plan&body=I'm%20interested%20in%20learning%20more%20about%20your%20Professional%20Plan." class="block w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition-colors text-center">Get Started</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Enterprise Plan -->
+                <div class="pricing-card bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300">
+                    <div class="bg-gray-100 p-6 text-center">
+                        <h3 class="text-2xl font-bold text-gray-800">Enterprise</h3>
+                        <div class="mt-4">
+                            <span class="text-4xl font-bold text-gray-800">$299</span>
+                            <span class="text-gray-600">/month</span>
+                        </div>
+                        <p class="mt-2 text-gray-600">For large organizations</p>
+                    </div>
+                    <div class="p-6">
+                        <ul class="space-y-4">
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                </svg>
+                                <span>All 15 Bazillu products</span>
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                </svg>
+                                <span>Unlimited users</span>
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                </svg>
+                                <span>Unlimited cloud storage</span>
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                </svg>
+                                <span>Dedicated account manager</span>
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                </svg>
+                                <span>Custom integrations</span>
+                            </li>
+                        </ul>
+                        <div class="mt-8">
+                            <a href="mailto:bazilluincorporation@gmail.com?subject=Inquiry%20about%20Enterprise%20Plan&body=I'm%20interested%20in%20learning%20more%20about%20your%20Enterprise%20Plan." class="block w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition-colors text-center">Get Started</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-12 text-center">
+                <p class="text-gray-600 mb-4">Need a custom solution? Contact our sales team for a tailored quote.</p>
+                <a href="mailto:bazilluincorporation@gmail.com?subject=Custom%20Pricing%20Inquiry&body=I'm%20interested%20in%20learning%20more%20about%20custom%20pricing%20options%20for%20my%20organization." class="inline-block bg-gray-800 hover:bg-gray-900 text-white font-medium py-2 px-6 rounded-lg transition-colors">Contact Sales</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="container mx-auto px-4 md:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0 slide-in-left">
+                    <svg class="w-full max-w-md mx-auto pulse-animation" viewBox="0 0 500 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="250" cy="200" r="150" fill="#0078d4" fill-opacity="0.1"/>
+                        <path d="M150 150H350V250H150V150Z" fill="#0078d4" fill-opacity="0.2"/>
+                        <path d="M175 175H325V225H175V175Z" fill="#0078d4" fill-opacity="0.3"/>
+                        <path d="M150 150L250 100L350 150" stroke="#0078d4" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M150 250L250 300L350 250" stroke="#0078d4" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+                        <circle cx="250" cy="200" r="30" stroke="#0078d4" stroke-width="8"/>
+                        <path d="M220 200H280" stroke="#0078d4" stroke-width="8" stroke-linecap="round"/>
+                        <path d="M250 170V230" stroke="#0078d4" stroke-width="8" stroke-linecap="round"/>
+                    </svg>
+                </div>
+                <div class="md:w-1/2 md:pl-10 slide-in-right">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-6">About Bazillu</h2>
+                    <p class="text-lg text-gray-600 mb-6">Bazillu is a forward-thinking technology company dedicated to creating innovative solutions that empower businesses and individuals to achieve more. Founded in 2025 with a vision to transform the digital landscape, we combine cutting-edge technology with user-centric design to deliver products that make a difference.</p>
+                    <p class="text-lg text-gray-600 mb-6">Our team of passionate technologists, designers, and problem-solvers work tirelessly to push the boundaries of what's possible, creating tools and platforms that enhance productivity, foster collaboration, and drive digital transformation.</p>
+                    <p class="text-lg text-gray-600">With a commitment to excellence and a focus on customer success, Bazillu continues to lead the way in developing technology that matters.</p>
+                    <div class="mt-8">
+                        <a href="#contact" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-6 rounded-lg transition-colors">Get in Touch</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission Section -->
+    <section id="mission" class="py-20 bg-blue-600 text-white">
+        <div class="container mx-auto px-4 md:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Our Mission</h2>
+                <p class="text-xl opacity-90 max-w-3xl mx-auto">To empower every person and every organization on the planet to achieve more through innovative technology.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white bg-opacity-10 p-8 rounded-xl transform transition-all hover:scale-105">
+                    <div class="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center mb-6 mx-auto">
+                        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-3-3a1 1 0 00-1.414 0l-3 3a1 1 0 001.414 1.414L9 9.414V13a1 1 0 102 0V9.414l1.293 1.293a1 1 0 001.414-1.414z" clip-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4 text-center">Innovation</h3>
+                    <p class="text-center opacity-90">We constantly push the boundaries of technology to create solutions that address real-world challenges and open new possibilities.</p>
+                </div>
+                
+                <div class="bg-white bg-opacity-10 p-8 rounded-xl transform transition-all hover:scale-105">
+                    <div class="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center mb-6 mx-auto">
+                        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4 text-center">Inclusion</h3>
+                    <p class="text-center opacity-90">We believe technology should be accessible to everyone, and we design our products with diversity and inclusivity at their core.</p>
+                </div>
+                
+                <div class="bg-white bg-opacity-10 p-8 rounded-xl transform transition-all hover:scale-105">
+                    <div class="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center mb-6 mx-auto">
+                        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4 text-center">Trust</h3>
+                    <p class="text-center opacity-90">We earn and maintain trust through security, privacy, compliance, and transparency in everything we do.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4 md:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Get in Touch</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">Have questions about our products or services? We'd love to hear from you. Reach out to our team for more information.</p>
+            </div>
+            
+            <div class="max-w-4xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="bg-white p-8 rounded-xl shadow-lg slide-in-left">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-6">Contact Information</h3>
+                        
+                        <div class="flex items-start mb-6">
+                            <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                                <svg class="w-5 h-5 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path>
+                                    <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <p class="text-gray-600 font-medium">Email</p>
+                                <a href="mailto:bazilluincorporation@gmail.com" class="text-blue-600 hover:text-blue-800 transition-colors">bazilluincorporation@gmail.com</a>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start mb-6">
+                            <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                                <svg class="w-5 h-5 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <p class="text-gray-600 font-medium">Headquarters</p>
+                                <p class="text-gray-800">123 Tech Avenue, Innovation District<br>San Francisco, CA 94105</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                                <svg class="w-5 h-5 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <p class="text-gray-600 font-medium">Phone</p>
+                                <p class="text-gray-800">+1 (555) 123-4567</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white p-8 rounded-xl shadow-lg slide-in-right">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-6">Send Us a Message</h3>
+                        <p class="text-gray-600 mb-6">For product inquiries or support, please email us directly at <a href="mailto:bazilluincorporation@gmail.com" class="text-blue-600 hover:text-blue-800 transition-colors">bazilluincorporation@gmail.com</a> with your request.</p>
+                        
+                        <a href="mailto:bazilluincorporation@gmail.com?subject=General%20Inquiry&body=Hello%20Bazillu%20Team,%0A%0AI'm%20interested%20in%20learning%20more%20about%20your%20products%20and%20services.%0A%0APlease%20contact%20me%20at%20your%20earliest%20convenience.%0A%0AThank%20you!" class="block w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-4 rounded-lg transition-colors text-center">Contact Us</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4 md:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <svg class="h-8 w-8 text-blue-400" viewBox="0 0 40 40" fill="currentColor">
+                            <path d="M20 5C11.729 5 5 11.729 5 20C5 28.271 11.729 35 20 35C28.271 35 35 28.271 35 20C35 11.729 28.271 5 20 5ZM20 32C13.383 32 8 26.617 8 20C8 13.383 13.383 8 20 8C26.617 8 32 13.383 32 20C32 26.617 26.617 32 20 32Z"/>
+                            <path d="M25 15H15V25H25V15Z"/>
+                        </svg>
+                        <span class="ml-2 text-xl font-bold">Bazillu</span>
+                    </div>
+                    <p class="text-gray-400 mb-4">Transforming tomorrow with technology today.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"></path>
+                            </svg>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"></path>
+                            </svg>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" clip-rule="evenodd"></path>
+                            </svg>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path fill-rule="evenodd" d="M19.812 5.418c.861.23 1.538.907 1.768 1.768C21.998 8.746 22 12 22 12s0 3.255-.418 4.814a2.504 2.504 0 0 1-1.768 1.768c-1.56.419-7.814.419-7.814.419s-6.255 0-7.814-.419a2.505 2.505 0 0 1-1.768-1.768C2 15.255 2 12 2 12s0-3.255.417-4.814a2.507 2.507 0 0 1 1.768-1.768C5.744 5 11.998 5 11.998 5s6.255 0 7.814.418ZM15.194 12 10 15V9l5.194 3Z" clip-rule="evenodd"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Products</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#products" class="text-gray-400 hover:text-white transition-colors">Bazillu AI Assistant</a></li>
+                        <li><a href="#products" class="text-gray-400 hover:text-white transition-colors">Bazillu 365</a></li>
+                        <li><a href="#products" class="text-gray-400 hover:text-white transition-colors">Bazillu Cloud</a></li>
+                        <li><a href="#products" class="text-gray-400 hover:text-white transition-colors">Bazillu Teams</a></li>
+                        <li><a href="#products" class="text-gray-400 hover:text-white transition-colors">Bazillu Edge</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Company</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#about" class="text-gray-400 hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="#mission" class="text-gray-400 hover:text-white transition-colors">Our Mission</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Careers</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">News</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Resources</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Documentation</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Support</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Blog</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Developers</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Partners</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-12 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <p class="text-gray-400 text-sm mb-4 md:mb-0">&copy; 2025 Bazillu Inc. All rights reserved.</p>
+                    <div class="flex space-x-6">
+                        <a href="#" class="text-gray-400 hover:text-white text-sm transition-colors">Privacy Policy</a>
+                        <a href="#" class="text-gray-400 hover:text-white text-sm transition-colors">Terms of Service</a>
+                        <a href="#" class="text-gray-400 hover:text-white text-sm transition-colors">Cookie Policy</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- AI Assistant -->
+    <div id="ai-assistant" class="ai-assistant fixed bottom-4 right-4 w-80 bg-white rounded-xl shadow-2xl overflow-hidden transition-all duration-300 collapsed">
+        <div id="ai-header" class="bg-blue-600 p-4 flex justify-between items-center cursor-pointer">
+            <div class="flex items-center">
+                <svg class="w-6 h-6 text-white mr-2" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"></path>
+                    <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"></path>
+                </svg>
+                <span class="text-white font-medium">Bazillu Assistant</span>
+            </div>
+            <button id="ai-toggle" class="text-white focus:outline-none">
+                <svg id="expand-icon" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" clip-rule="evenodd"></path>
+                </svg>
+                <svg id="collapse-icon" class="w-5 h-5 hidden" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                </svg>
+            </button>
+        </div>
+        <div id="ai-body" class="hidden">
+            <div id="chat-container" class="chat-container p-4 bg-gray-50">
+                <div class="flex mb-4">
+                    <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mr-2 flex-shrink-0">
+                        <svg class="w-4 h-4 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"></path>
+                            <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                    <div class="bg-white p-3 rounded-lg shadow-sm">
+                        <p class="text-gray-800">Hello! I'm Bazillu Assistant. How can I help you today?</p>
+                    </div>
+                </div>
+            </div>
+            <div class="p-4 border-t">
+                <div class="flex">
+                    <input id="user-input" type="text" placeholder="Ask me anything about Bazillu..." class="flex-1 border border-gray-300 rounded-l-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                    <button id="send-button" class="bg-blue-600 text-white px-4 py-2 rounded-r-lg hover:bg-blue-700 transition-colors">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                }
+            });
+        });
+        
+        // AI Assistant functionality
+        const aiAssistant = document.getElementById('ai-assistant');
+        const aiHeader = document.getElementById('ai-header');
+        const aiBody = document.getElementById('ai-body');
+        const expandIcon = document.getElementById('expand-icon');
+        const collapseIcon = document.getElementById('collapse-icon');
+        const chatContainer = document.getElementById('chat-container');
+        const userInput = document.getElementById('user-input');
+        const sendButton = document.getElementById('send-button');
+        
+        // Toggle AI Assistant
+        aiHeader.addEventListener('click', () => {
+            aiAssistant.classList.toggle('collapsed');
+            aiAssistant.classList.toggle('expanded');
+            aiBody.classList.toggle('hidden');
+            expandIcon.classList.toggle('hidden');
+            collapseIcon.classList.toggle('hidden');
+        });
+        
+        // AI Assistant responses
+        const responses = {
+            "products": "Bazillu offers 15 innovative products including Bazillu AI Assistant, Bazillu 365, Bazillu Cloud, Bazillu Teams, and more. You can explore all our products in the Products section of our website.",
+            "pricing": "We offer three pricing tiers: Starter ($29/month), Professional ($99/month), and Enterprise ($299/month). Each plan includes different features and user limits. Check our Pricing section for more details.",
+            "contact": "You can contact us via email at bazilluincorporation@gmail.com, by phone at +1 (555) 123-4567, or visit our headquarters at 123 Tech Avenue, Innovation District, San Francisco, CA 94105.",
+            "about": "Bazillu is a forward-thinking technology company founded in 2025. We're dedicated to creating innovative solutions that empower businesses and individuals to achieve more.",
+            "mission": "Our mission is to empower every person and every organization on the planet to achieve more through innovative technology.",
+            "help": "I can help you learn about our products, pricing, company information, or how to contact us. Just ask me what you'd like to know!",
+            "default": "I don't have specific information about that. For more details, please contact us at bazilluincorporation@gmail.com or explore our website."
+        };
+        
+        function addMessage(message, isUser = false) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'flex mb-4' + (isUser ? ' justify-end' : '');
+            
+            if (isUser) {
+                messageDiv.innerHTML = `
+                    <div class="bg-blue-600 p-3 rounded-lg shadow-sm text-white max-w-xs">
+                        <p>${message}</p>
+                    </div>
+                    <div class="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center ml-2 flex-shrink-0">
+                        <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                `;
+            } else {
+                messageDiv.innerHTML = `
+                    <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mr-2 flex-shrink-0">
+                        <svg class="w-4 h-4 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"></path>
+                            <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                    <div class="bg-white p-3 rounded-lg shadow-sm max-w-xs">
+                        <p class="text-gray-800">${message}</p>
+                    </div>
+                `;
+            }
+            
+            chatContainer.appendChild(messageDiv);
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+        }
+        
+        function getResponse(input) {
+            input = input.toLowerCase();
+            
+            if (input.includes('product') || input.includes('offer') || input.includes('solution')) {
+                return responses.products;
+            } else if (input.includes('price') || input.includes('cost') || input.includes('plan') || input.includes('subscription')) {
+                return responses.pricing;
+            } else if (input.includes('contact') || input.includes('email') || input.includes('phone') || input.includes('reach')) {
+                return responses.contact;
+            } else if (input.includes('about') || input.includes('company') || input.includes('who')) {
+                return responses.about;
+            } else if (input.includes('mission') || input.includes('vision') || input.includes('goal')) {
+                return responses.mission;
+            } else if (input.includes('help') || input.includes('assist') || input.includes('support')) {
+                return responses.help;
+            } else {
+                return responses.default;
+            }
+        }
+        
+        sendButton.addEventListener('click', () => {
+            const message = userInput.value.trim();
+            if (message) {
+                addMessage(message, true);
+                userInput.value = '';
+                
+                // Simulate typing delay
+                setTimeout(() => {
+                    const response = getResponse(message);
+                    addMessage(response);
+                }, 500);
+            }
+        });
+        
+        userInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                sendButton.click();
+            }
+        });
+        
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate__animated', 'animate__fadeIn');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'965219e2063b02ad',t:'MTc1MzUxNDA3Ni4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
+
